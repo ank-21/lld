@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Game {
     Deque<Player> players;
     Board gameBoard;
+    Scanner inputScanner = new Scanner(System.in);
 
     public void initializeGame(){
         //creating 2 players
@@ -38,7 +39,6 @@ public class Game {
     public String startGame(){
 
         boolean noWinner = true;
-        Scanner inputScanner = new Scanner(System.in);
         while(noWinner){
             //turn of the player
             Player currPlayer = players.removeFirst();
@@ -73,8 +73,8 @@ public class Game {
                 int inputCol = Integer.valueOf(values[1]);
 
                 //add piece at input row and col
-                if(!gameBoard.addPiece(inputRow, inputCol, currPlayer.getPlayingPieceType())){
-                    System.out.println("Incorrect Position Selected");
+                if((inputRow >= gameBoard.getSize() || inputCol >= gameBoard.getSize()) || (!gameBoard.addPiece(inputRow, inputCol, currPlayer.getPlayingPieceType()))){
+                    System.out.println("Incorrect Position Selected. Please try again!");
                     players.addFirst(currPlayer);
                     continue;
                 }
@@ -88,7 +88,7 @@ public class Game {
                     return currPlayer.getPlayerName();
                 }
             } else {
-                System.out.println("No input found. Exiting the game.");
+                System.out.println("No input found. Please try again!");
             }
         }
         return "tie";
