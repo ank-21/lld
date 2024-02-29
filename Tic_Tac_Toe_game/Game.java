@@ -1,21 +1,20 @@
 package lld.Tic_Tac_Toe_game;
 
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 import lld.Tic_Tac_Toe_game.Model.Board;
-import lld.Tic_Tac_Toe_game.Model.Piece;
 import lld.Tic_Tac_Toe_game.Model.PieceO;
 import lld.Tic_Tac_Toe_game.Model.PieceType;
 import lld.Tic_Tac_Toe_game.Model.PieceX;
 import lld.Tic_Tac_Toe_game.Model.Player;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Scanner;
-
 public class Game {
     Deque<Player> players;
     Board gameBoard;
     Scanner inputScanner = new Scanner(System.in);
-
+    
     public void initializeGame(){
         //creating 2 players
         players = new LinkedList<>();
@@ -24,7 +23,8 @@ public class Game {
         PieceX crossPiece = new PieceX();
         PieceO noughtsPiece = new PieceO();
 
-        //Piece obj1 = new Piece(PieceType.X);
+        //Piece obj1 = new Piece(PieceType.X);  //can be made like this by not making subclass of Piece but yeah it is more expandable
+        //this can be made as a factory design pattern when asked user to pick a piece among n pieces
 
         Player player1 = new Player("Ankit", noughtsPiece);
         Player player2 = new Player("Aayusha", crossPiece);
