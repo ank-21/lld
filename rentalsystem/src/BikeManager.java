@@ -1,5 +1,4 @@
 import product.Bike;
-import product.Scooty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,7 @@ public class BikeManager implements VehicleManager {
     private List<Bike> bikes = new ArrayList<>();
 
     public BikeManager(){
-        Random random = new Random();
+        //add random here
 
         addVehicle(1, 1001);
         addVehicle(2, 1002);

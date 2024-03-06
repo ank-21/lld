@@ -1,7 +1,6 @@
 package product;
 
 public class Scooty extends Vehicle{
-
     public Scooty(){
         setDailyRentalCost(300);
         setHourlyRentalCost(125);

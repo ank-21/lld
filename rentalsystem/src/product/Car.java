@@ -1,7 +1,6 @@
 package product;
 
 public class Car extends Vehicle{
-    VehicleType vehicleType = VehicleType.Car;
 
     public Car(){
         setDailyRentalCost(1000);

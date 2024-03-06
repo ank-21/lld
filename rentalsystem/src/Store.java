@@ -1,4 +1,3 @@
-import product.Bike;
 import product.VehicleType;
 
 import java.util.ArrayList;

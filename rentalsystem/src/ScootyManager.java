@@ -1,5 +1,4 @@
 import product.Scooty;
-import product.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
