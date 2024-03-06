@@ -46,37 +46,32 @@ public class ElevatorSystemApplication {
 
         System.out.println("Please press up or down arrow key");
         System.out.println("Person at floor 1 presses UP Button");
-        for(Floor floor: floorList)
-        {
-            if(floor.getFloorId() == 1){
+        for (Floor floor : floorList) {
+            if (floor.getFloorId() == 1) {
                 floor.pressButton(Direction.Up);
             }
         }
         System.out.println("Person at floor 3 presses UP Button");
-        for(Floor floor: floorList)
-        {
-            if(floor.getFloorId() == 3){
+        for (Floor floor : floorList) {
+            if (floor.getFloorId() == 3) {
                 floor.pressButton(Direction.Up);
             }
         }
         System.out.println("Person presses 10 in elevator 2");
-        for(ElevatorController elevatorController: ElevatorSystem.INSTANCE.getElevatorControllerList())
-        {
-            if(elevatorController.getId()==2)
+        for (ElevatorController elevatorController : ElevatorSystem.INSTANCE.getElevatorControllerList()) {
+            if (elevatorController.getId() == 2)
                 elevatorController.acceptNewInternalRequest(10);
 
         }
         System.out.println("Person at floor 5 presses UP Button");
-        for(Floor floor: floorList)
-        {
-            if(floor.getFloorId() == 5){
+        for (Floor floor : floorList) {
+            if (floor.getFloorId() == 5) {
                 floor.pressButton(Direction.Up);
             }
         }
         System.out.println("Person at floor 7 presses Down Button");
-        for(Floor floor: floorList)
-        {
-            if(floor.getFloorId() == 7){
+        for (Floor floor : floorList) {
+            if (floor.getFloorId() == 7) {
                 floor.pressButton(Direction.Down);
             }
         }
