@@ -1,7 +1,7 @@
 package model;
 
 public class Player {
-    private String playerName;
+    private final String playerName;
     private int currPosition;
 
     public Player(String playerName){

@@ -1,6 +1,5 @@
 import model.*;
 
-import java.awt.*;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;

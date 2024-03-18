@@ -1,8 +1,8 @@
 package model;
 
 public class Jumper {
-    private int start;
-    private int end;
+    private final int start;
+    private final int end;
 
     public Jumper(int start, int end){
         this.start  = start;

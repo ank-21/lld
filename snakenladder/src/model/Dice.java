@@ -3,7 +3,7 @@ package model;
 import java.util.Random;
 
 public class Dice {
-    private int diceCount;
+    private final int diceCount;
 
     public Dice(int diceCount){
         this.diceCount = diceCount;
@@ -14,5 +14,9 @@ public class Dice {
         int score = random.nextInt(6) + 1;
         System.out.println("Player " + player.getPlayerName() + " gets " + score);
         return score;
+    }
+
+    public int getDiceCount() {
+        return diceCount;
     }
 }
