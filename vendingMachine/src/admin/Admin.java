@@ -106,7 +106,6 @@ public class Admin {
 
     private static boolean actionOnChoice(int choice, VendingMachine vendingMachine) throws Exception {
         State vendingState = vendingMachine.getVendingMachineState();
-        Scanner sc = new Scanner(System.in);
 
         if (choice == 1) {
             //user selects a product

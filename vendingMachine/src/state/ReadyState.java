@@ -1,10 +1,8 @@
 package state;
 
-import model.Coin;
 import model.ItemShelf;
 import model.VendingMachine;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ReadyState implements State{
@@ -47,7 +45,6 @@ public class ReadyState implements State{
 
     @Override
     public void cancelTransaction() throws Exception {
-        return;
     }
 
     @Override
@@ -62,11 +59,9 @@ public class ReadyState implements State{
 
     @Override
     public void calculateChangeAmount() throws Exception {
-        return;
     }
 
     @Override
     public void updateInventory() throws Exception {
-        return;
     }
 }

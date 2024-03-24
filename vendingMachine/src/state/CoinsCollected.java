@@ -1,9 +1,6 @@
 package state;
 
-import model.Coin;
 import model.VendingMachine;
-
-import java.util.List;
 
 public class CoinsCollected implements State{
     VendingMachine vendingMachine;

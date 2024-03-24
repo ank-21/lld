@@ -1,9 +1,6 @@
 package state;
 
-import model.Coin;
 import model.VendingMachine;
-
-import java.util.List;
 
 public class CoinsDispensed implements State{
     VendingMachine vendingMachine;
@@ -44,11 +41,9 @@ public class CoinsDispensed implements State{
 
     @Override
     public void calculateChangeAmount() throws Exception {
-        return;
     }
 
     @Override
     public void updateInventory() throws Exception {
-        return;
     }
 }
