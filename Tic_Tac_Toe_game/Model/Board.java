@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Board {
     
-    private int size;
+    private final int size;
     public Piece[][] board;
     private Set<String> rowColSet;
     private int maxSize;

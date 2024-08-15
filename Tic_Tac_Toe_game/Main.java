@@ -7,7 +7,7 @@ public class Main {
         game.initializeGame();
 
         String winner = game.startGame();
-        if (winner != "tie")
+        if (!"tie".equals(winner))
             System.out.println("The winner of the game is " + winner);
         else
             System.out.println("The match is tied!");
