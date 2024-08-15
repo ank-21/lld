@@ -16,17 +16,22 @@ public class VendingMachine {
     private int purchasedQty;
     private ItemShelf purchasedItemShelf = null;
 
-    private static VendingMachine INSTANCE;
+    private static volatile VendingMachine INSTANCE;
 
     private VendingMachine(int inventorySize){
         vendingMachineState = new ReadyState(this);
+        // Other values like purchased Qty, amountInserted can be updated here or in the ready state
         coins = new ArrayList<>();
         inventory = new Inventory(inventorySize);
     }
 
     public static VendingMachine getInstance(int inventorySize){
         if(INSTANCE == null){
-            INSTANCE = new VendingMachine(inventorySize);
+            synchronized (VendingMachine.class){
+                if(INSTANCE == null){
+                    INSTANCE = new VendingMachine(inventorySize);
+                }
+            }
         }
         return INSTANCE;
     }

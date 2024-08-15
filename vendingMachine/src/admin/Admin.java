@@ -12,13 +12,13 @@ import java.util.Scanner;
 public class Admin {
     public static void main(String[] args) {
         try {
-            VendingMachine vendingMachine = VendingMachine.getInstance(5);
+            VendingMachine vendingMachine = VendingMachine.getInstance(3);
             System.out.println("Hey Admin, Let's start filling up items in the inventory");
-            fillUpInventory(vendingMachine);
+            // fillUpInventory(vendingMachine);
 
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("Hey User, Do you want to buy anything : Y/N");
+            System.out.println("Hey User, Do you want to buy anything : Y/N ");
             String userPurchasing = sc.nextLine();
             while ("Y".equalsIgnoreCase(userPurchasing)) {
 
@@ -48,46 +48,46 @@ public class Admin {
 
         System.out.println("Currently, we have these products to be added in the store");
 
-        for (ItemType type : ItemType.values()) {
-            System.out.print(type.toString().charAt(0) + type.toString().substring(1).toLowerCase() + " ");
-        }
-        System.out.println("\n");
+//        for (ItemType type : ItemType.values()) {
+//            System.out.print(type.toString().charAt(0) + type.toString().substring(1).toLowerCase() + " ");
+//        }
+//        System.out.println("\n");
 
-        Scanner sc = new Scanner(System.in);
-        String name, type;
-        int price, qty;
-
-        for (ItemShelf product : products) {
-
-            System.out.print("Please enter the item type : ");
-            type = sc.nextLine().trim().toUpperCase();
-            ItemType itemType = ItemType.valueOf(type);
-
-            System.out.print("Please enter the item name : ");
-            name = sc.nextLine();
-
-            System.out.print("Please enter the item price : ");
-            price = sc.nextInt();
-            sc.nextLine();
-
-            System.out.print("Please enter the item quantity : ");
-            qty = sc.nextInt();
-            sc.nextLine();
-            //What should we do here ?
-            while (qty > product.getCapacity()) {
-                System.out.println("Please don't add more quantity than the capacity of " + product.getCapacity());
-                System.out.print("Please enter the item quantity : ");
-                qty = sc.nextInt();
-                sc.nextLine();
-            }
-
-            Item newItem = new Item(name, price, itemType);
-
-            product.setItem(newItem);
-            product.setQuantity(qty);
-
-            System.out.println("Thanks for adding an item in stock\n");
-        }
+//        Scanner sc = new Scanner(System.in);
+//        String name, type;
+//        int price, qty;
+//
+//        for (ItemShelf product : products) {
+//
+//            System.out.print("Please enter the item type : ");
+//            type = sc.nextLine().trim().toUpperCase();
+//            ItemType itemType = ItemType.valueOf(type);
+//
+//            System.out.print("Please enter the item name : ");
+//            name = sc.nextLine();
+//
+//            System.out.print("Please enter the item price : ");
+//            price = sc.nextInt();
+//            sc.nextLine();
+//
+//            System.out.print("Please enter the item quantity : ");
+//            qty = sc.nextInt();
+//            sc.nextLine();
+//            //What should we do here ?
+//            while (qty > product.getCapacity()) {
+//                System.out.println("Please don't add more quantity than the capacity of " + product.getCapacity());
+//                System.out.print("Please enter the item quantity : ");
+//                qty = sc.nextInt();
+//                sc.nextLine();
+//            }
+//
+//            Item newItem = new Item(name, price, itemType);
+//
+//            product.setItem(newItem);
+//            product.setQuantity(qty);
+//
+//            System.out.println("Thanks for adding an item in stock\n");
+//        }
     }
 
     private static void displayInventory(VendingMachine vendingMachine) {

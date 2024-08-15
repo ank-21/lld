@@ -23,7 +23,7 @@ public class HundredWithdrawalProcessor extends CashWithdrawalProcessor{
             atm.setNoOf2kNotes(atm.getNoOf2kNotes() + twoThousandDeductedNote);
             atm.setNoOf500Notes(atm.getNoOf500Notes() + fiveHundredDeductedNote);
             atm.setNoOf100Notes(atm.getNoOf100Notes() + oneHundredDeductedNote);
-            throw new Exception("Something went wrong");
+            throw new Exception("We support notes of 2000, 500, 100 only.");
         }else{
             System.out.println("You received " + twoThousandDeductedNote + " 2000 notes, " + fiveHundredDeductedNote + " 500 notes, " + oneHundredDeductedNote + " 100 notes.");
         }

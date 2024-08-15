@@ -3,13 +3,18 @@ package user;
 import java.util.Scanner;
 
 public class User {
-    private static User INSTANCE;
+    private static volatile User INSTANCE;
+
 
     private User(){}
 
     public static User getInstance(){
         if(INSTANCE == null){
-            INSTANCE = new User();
+            synchronized (User.class){
+                if(INSTANCE == null){
+                    INSTANCE = new User();
+                }
+            }
         }
         return INSTANCE;
     }
@@ -31,7 +36,7 @@ public class User {
             String userLeaving = sc.nextLine();
 
             if(userLeaving.equalsIgnoreCase("n")){
-                selectOption();
+                return selectOption();
             }
         }else if(choice > 5 || choice <= 0){
             System.out.println("Please select a choice with in the range!");
