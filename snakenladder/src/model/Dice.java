@@ -11,7 +11,7 @@ public class Dice {
 
     public int rollDice(Player player){
         Random random = new Random();
-        int score = random.nextInt(6) + 1;
+        int score = random.nextInt(6 * diceCount) + 1;
         System.out.println("Player " + player.getPlayerName() + " gets " + score);
         return score;
     }

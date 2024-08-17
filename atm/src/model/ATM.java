@@ -11,11 +11,15 @@ public class ATM {
 
     private ATM(){}
 
-    private static ATM INSTANCE;
+    private static volatile ATM INSTANCE;
 
     public static ATM getInstance() {
         if(INSTANCE == null){
-            INSTANCE =  new ATM();
+            synchronized (ATM.class){
+                if(INSTANCE == null){
+                    INSTANCE =  new ATM();
+                }
+            }
         }
         return INSTANCE;
     }

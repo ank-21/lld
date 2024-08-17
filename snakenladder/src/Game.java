@@ -33,6 +33,8 @@ public class Game {
         int snakeCount = sc.nextInt();
 
         board = new Board(boardSize, ladderCount, snakeCount);
+        // Can be made static for interview
+        // board = new Board(10, 6, 8);
     }
 
     private void addDice(){
