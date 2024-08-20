@@ -24,6 +24,7 @@ public class LoggerFramework {
         logObject.addLog(log7, fileAppender);
 
         // Close the fileAppender explicitly
+        // This could be solved if I don't use the reference variable of interface name instead I use the reference variable of the class it is invoking the object
         ((FileLogAppender) fileAppender).closeAppender();
     }
 
