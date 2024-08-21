@@ -37,7 +37,7 @@ public class InventoryManager {
         inventoryMap.put(itemName, inventory);
     }
 
-    public void updateQuantity(ItemName itemName, int quantityUsed){
+    public synchronized void updateQuantity(ItemName itemName, int quantityUsed){
         Inventory inventory = inventoryMap.get(itemName);
         inventory.updateQuantity(quantityUsed);
     }

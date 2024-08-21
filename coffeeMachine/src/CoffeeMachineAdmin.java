@@ -8,6 +8,7 @@ import product.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class CoffeeMachineAdmin {
     public static volatile CoffeeMachineAdmin instance = null;
@@ -72,30 +73,59 @@ public class CoffeeMachineAdmin {
         System.out.println("\n");
     }
 
-    public synchronized Coffee selectCoffee(String coffeeName, List<Coffee> coffeeMenu){
-        for (Coffee coffee : coffeeMenu){
-            if(coffee.getName().equalsIgnoreCase(coffeeName)){
+//    public synchronized Coffee selectCoffee(String coffeeName, List<Coffee> coffeeMenu){
+//        for (Coffee coffee : coffeeMenu){
+//            if(coffee.getName().equalsIgnoreCase(coffeeName)){
+//                return coffee;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    // synchronized for handling concurrent request
+//    public synchronized void dispenseCoffee(Coffee coffee){
+//        List<Ingredient> ingredients = coffee.getIngredientList();
+//        if(hasEnoughIngredients(ingredients)){
+//
+//            for(Ingredient ingredient : ingredients){
+//                inventoryManager.updateQuantity(ingredient.getItemName(), ingredient.getQuantity());
+//            }
+//            // Handle payment in future
+//            System.out.println("Hey User your " + coffee.getName() + " has been dispensed");
+//        }else{
+//            System.out.println("Sorry, we are out of stock for today!");
+//        }
+//    }
+
+    private ReentrantLock lock = new ReentrantLock();
+
+    public synchronized Coffee selectCoffee(String coffeeName, List<Coffee> coffeeMenu) {
+        for (Coffee coffee : coffeeMenu) {
+            if (coffee.getName().equalsIgnoreCase(coffeeName)) {
                 return coffee;
             }
         }
         return null;
     }
 
-    // synchronized for handling concurrent request
-    public synchronized void dispenseCoffee(Coffee coffee){
-        List<Ingredient> ingredients = coffee.getIngredientList();
-        if(hasEnoughIngredients(ingredients)){
-
-            for(Ingredient ingredient : ingredients){
-                inventoryManager.updateQuantity(ingredient.getItemName(), ingredient.getQuantity());
+    public void dispenseCoffee(Coffee coffee) {
+        lock.lock();
+        try {
+            List<Ingredient> ingredients = coffee.getIngredientList();
+            if (hasEnoughIngredients(ingredients)) {
+                for (Ingredient ingredient : ingredients) {
+                    inventoryManager.updateQuantity(ingredient.getItemName(), ingredient.getQuantity());
+                }
+                System.out.println("Hey User, your " + coffee.getName() + " has been dispensed.");
+            } else {
+                System.out.println("Sorry, we are out of stock for today!");
             }
-            // Handle payment in future
-            System.out.println("Hey User your " + coffee.getName() + " has been dispensed");
-        }else{
-            System.out.println("Sorry, we are out of stock for today!");
+        } finally {
+            lock.unlock();
         }
     }
 
+    // No need of sync as read only
     private boolean hasEnoughIngredients(List<Ingredient> ingredients){
         for(Ingredient ingredient : ingredients){
             if(ingredient.getQuantity() > inventoryManager.getInventoryMap().get(ingredient.getItemName()).getQuantityLeft()){
