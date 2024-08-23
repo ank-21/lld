@@ -13,6 +13,7 @@ public class CollectionManager {
     }
 
     public void executeCommand(Icommand command, String userId){
+        // Only push if the command is of instance Delete as we have to undo delete only
         userCollectionHistory
                 .computeIfAbsent(userId, k -> new Stack<>())
                 .push(command);

@@ -7,6 +7,7 @@ import product.CoffeeType;
 import product.Ingredient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -30,9 +31,9 @@ public class CoffeeMachineAdmin {
     }
 
     public void addItemsInInventory(){
-        inventoryManager.addInventory("Milk", ItemName.MILK, 6, 30, 2);
-        inventoryManager.addInventory("Coffee Powder Sachet", ItemName.COFFEE_POWDER_SACHET, 6, 5, 3);
-        inventoryManager.addInventory("Sugar sachet", ItemName.SUGAR_SACHET, 10, 2, 4);
+        inventoryManager.addInventory("Milk", ItemName.MILK, 9, 30, 2);
+        inventoryManager.addInventory("Coffee Powder Sachet", ItemName.COFFEE_POWDER_SACHET, 12, 5, 3);
+        inventoryManager.addInventory("Sugar sachet", ItemName.SUGAR_SACHET, 13, 2, 4);
     }
 
     public void setupMenu(List<Coffee> coffeeMenu){
@@ -112,6 +113,15 @@ public class CoffeeMachineAdmin {
         lock.lock();
         try {
             List<Ingredient> ingredients = coffee.getIngredientList();
+
+            System.out.print("Request for " + coffee.getName() + " ");
+
+            for(Ingredient ingredient : ingredients){
+                System.out.print(ingredient.getItemName() + " : " + ingredient.getQuantity() + " ");
+            }
+
+            System.out.println("\nBefore dispatching, inventory status");
+            printQuantity();
             if (hasEnoughIngredients(ingredients)) {
                 for (Ingredient ingredient : ingredients) {
                     inventoryManager.updateQuantity(ingredient.getItemName(), ingredient.getQuantity());
@@ -120,6 +130,8 @@ public class CoffeeMachineAdmin {
             } else {
                 System.out.println("Sorry, we are out of stock for today!");
             }
+            System.out.println("After dispatching, inventory status");
+            printQuantity();
         } finally {
             lock.unlock();
         }
@@ -128,10 +140,17 @@ public class CoffeeMachineAdmin {
     // No need of sync as read only
     private boolean hasEnoughIngredients(List<Ingredient> ingredients){
         for(Ingredient ingredient : ingredients){
-            if(ingredient.getQuantity() > inventoryManager.getInventoryMap().get(ingredient.getItemName()).getQuantityLeft()){
+            int requirementQty = ingredient.getQuantity();
+            int availableQty = inventoryManager.getInventoryMap().get(ingredient.getItemName()).getQuantityLeft();
+            if(requirementQty > availableQty)
                 return false;
-            }
         }
         return true;
+    }
+
+    private void printQuantity(){
+        inventoryManager.getInventoryMap().forEach(
+                (key, value) -> System.out.println(key.name() + " : " + value.getQuantityLeft())
+        );
     }
 }
