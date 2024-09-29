@@ -14,6 +14,7 @@ public class EMICalculator {
         loanService.createLoan(100000, 8.4, 3, "ank21", "aay11");
         loanService.makeEMIPayments("aay11");
         loanService.fetchLoanOfAnUser("aay11", "muk17");
+        loanService.fetchLoanOfAnUser("aay11", "ank21");
         loanService.createLoan(50000, 7.6, 5, "ank21", "aay11");
         loanService.fetchLoanOfAnUser("aay11", "aay11");
     }

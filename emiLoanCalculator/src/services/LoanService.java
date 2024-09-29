@@ -60,7 +60,8 @@ public class LoanService {
     }
 
     public void fetchLoanOfAnUser(String customerUserName, String requestedUserName){
-        if(customerUserName.equals(requestedUserName)){
+        System.out.println("Loans view request by " + userService.getUser(requestedUserName).getName());
+        if(customerUserName.equals(requestedUserName) || userService.getUser(requestedUserName) instanceof Admin){
             showLoansOfUser(customerUserName);
         }else{
             System.out.println("Access Denied, Please check loans of yours");
