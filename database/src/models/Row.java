@@ -4,9 +4,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public class Row {
-    private String rowId;   // primary key
+    private String rowId;
     private HashMap<String, Object> columnHashMap;
-
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

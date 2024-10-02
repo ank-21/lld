@@ -34,13 +34,13 @@ public class Database {
         return createdAt;
     }
 
-    public Table createTable(String tableName, List<Column> columns){
+    public Table createTable(String tableName, List<Column> columns, Column primaryKey){
         if(tables.containsKey(tableName)){
             System.out.println("Table name already exists!");
             return null;
         }
         String tableId = UUID.randomUUID().toString();
-        Table table = new Table(tableName, tableId, columns, LocalDateTime.now());
+        Table table = new Table(tableName, tableId, columns, LocalDateTime.now(), primaryKey);
         tables.put(tableName, table);
         System.out.println("Table " + tableName + " created successfully!");
         return table;
@@ -50,7 +50,9 @@ public class Database {
         System.out.println();
         for(Table table : tables.values()){
             System.out.println("Table Name : " + table.getTableName());
-            for(Column column : table.getColumns()){
+            System.out.println("Table Number : " + table.getTableNo());
+            System.out.println("Primary Key : " + table.getPrimaryKey().getColumnName());
+            for(Column column : table.getColumnHashMap().values()){
                 System.out.print("Column Name " + column.getColumnName());
                 System.out.println("\tColumn Type " + column.getColumnType());
             }
