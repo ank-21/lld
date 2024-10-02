@@ -1,5 +1,4 @@
 public class ErrorLogger extends CustomLogger {
-    CustomLogger nextLogger;
 
     ErrorLogger(CustomLogger nextLogger){
         super(nextLogger);

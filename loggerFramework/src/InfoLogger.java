@@ -1,5 +1,4 @@
 public class InfoLogger extends CustomLogger {
-    CustomLogger nextLogger;
 
     InfoLogger(CustomLogger nextLogger){
         super(nextLogger);

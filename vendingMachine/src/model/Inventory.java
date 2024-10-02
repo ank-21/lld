@@ -36,7 +36,7 @@ public class Inventory {
             shelf.setItem(itemList.get(productItr));
             codeMapToShelf.put(startCode, shelf);
             startCode++;
-            products[productItr] = shelf;
+            products[productItr] = shelf; // can be a list
         }
     }
 

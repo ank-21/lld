@@ -33,7 +33,7 @@ public class Postman {
         System.out.println("\nAfter undoing the delete for user1:");
         collectionManager.listCollections();
 
-        // Try to undo for user2 (should have no effect)
+        // Try to undo for user2 (should have no effect) as undo is for delete
         collectionManager.undo(user2.getUserId());
 
         System.out.println("\nAfter attempting undo for user2:");
