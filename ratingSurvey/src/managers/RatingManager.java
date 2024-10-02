@@ -15,7 +15,7 @@ public class RatingManager {
         surveyManager = SurveyManager.getInstance();
     }
 
-    public static volatile RatingManager instance = null;
+    private static volatile RatingManager instance = null;
     public static RatingManager getInstance(){
         if(instance == null){
             synchronized (RatingManager.class){
