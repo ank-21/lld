@@ -15,7 +15,7 @@ public class SurveyManager {
         this.questionsMap = new HashMap<>();
     }
 
-    public static volatile SurveyManager instance = null;
+    private static volatile SurveyManager instance = null;
 
     public static SurveyManager getInstance(){
         if(instance == null){

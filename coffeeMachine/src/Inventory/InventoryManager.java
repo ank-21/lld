@@ -8,7 +8,7 @@ public class InventoryManager {
     private InventoryObserver userNotificationInventoryObserver;
     private HashMap<ItemName, Inventory> inventoryMap;
 
-    public static volatile InventoryManager instance = null;
+    private static volatile InventoryManager instance = null;
 
     private InventoryManager(){
         // Create observers

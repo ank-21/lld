@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class CoffeeMachineAdmin {
-    public static volatile CoffeeMachineAdmin instance = null;
+    private static volatile CoffeeMachineAdmin instance = null;
     private InventoryManager inventoryManager;
 
     private CoffeeMachineAdmin(){

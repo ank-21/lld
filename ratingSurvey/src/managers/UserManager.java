@@ -10,7 +10,7 @@ public class UserManager {
         this.users = new HashMap<>();
     }
 
-    public static volatile UserManager instance = null;
+    private static volatile UserManager instance = null;
 
     public static UserManager getInstance(){
         if(instance == null){

@@ -17,7 +17,7 @@ public class SurveyResponseManagers {
         surveyManager = SurveyManager.getInstance();
     }
 
-    public static volatile SurveyResponseManagers instance = null;
+    private static volatile SurveyResponseManagers instance = null;
 
     public static SurveyResponseManagers getInstance(){
         if(instance == null){
