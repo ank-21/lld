@@ -26,7 +26,4 @@ public class Display {
         System.out.println("Current floor is " + currentFloorNo);
         System.out.println("Current Direction is " + dir);
     }
-
-
-
 }

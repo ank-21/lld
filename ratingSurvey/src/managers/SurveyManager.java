@@ -12,6 +12,7 @@ public class SurveyManager {
 
     private SurveyManager() {
         this.surveys = new HashMap<>();
+        // Uses in surveyResponseManager for printing question for answer
         this.questionsMap = new HashMap<>();
     }
 

@@ -2,6 +2,7 @@ package models;
 
 import controllers.ElevatorController;
 import enums.Direction;
+import strategy.ElevatorSelectionStrategy;
 
 public class ExternalButtonDispatcher {
 
@@ -21,12 +22,13 @@ public class ExternalButtonDispatcher {
 
     public void acceptNewRequest(int floorNo, Direction dir){
         // Implement various selection strategies to select the elevator
-        int elevatorId = 1;
-        System.out.println("The selected elevator is " + elevatorId);
+        ElevatorSelectionStrategy elevatorSelectionStrategy = ElevatorSystem.getInstance().getElevatorSelectionStrategy();
+        Elevator elevator = elevatorSelectionStrategy.selectElevator(floorNo, dir);
+        System.out.println("The selected elevator is " + elevator.getId());
 
         // Calling the accept External request function from the respective controller
         for(ElevatorController controller : ElevatorSystem.getInstance().getElevatorControllerList()){
-            if(controller.getId() == elevatorId){
+            if(controller.getElevator().getId() == elevator.getId()){
                 controller.acceptExternalRequest(floorNo, dir);
             }
         }

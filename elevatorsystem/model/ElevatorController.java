@@ -54,7 +54,7 @@ public class ElevatorController {
                 else
                     pendingUpOperations.offer(floor);
             }else if(direction == Direction.Down){
-                pendingDownOperations.offer(floor);
+                pendingDownOperations.offer(floor); // Wrong
             }
         }else if(elevator.currentDir == Direction.Down){
             if(direction == Direction.Down){
