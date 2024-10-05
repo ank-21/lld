@@ -2,6 +2,7 @@ package main;
 
 import controllers.ElevatorController;
 import enums.Direction;
+import models.Elevator;
 import models.ElevatorSystem;
 import models.ExternalButton;
 import models.Floor;
@@ -83,7 +84,8 @@ public class ElevatorSystemApplication {
                     if(elevatorId >= 0 && elevatorId < ElevatorSystem.getInstance().getElevatorControllerList().size()){
                         // worked because of index
                         ElevatorController controller = elevatorSystem.getElevatorControllerList().get(elevatorId);
-                        controller.acceptInternalRequest(destinationFloor);
+                        Elevator elevator = controller.getElevator();
+                        elevator.getInternalButton().pressButton(destinationFloor, elevator);
                     }else {
                         System.out.println("Wrong value enetered, please try again");
                     }

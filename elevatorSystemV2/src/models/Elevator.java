@@ -13,6 +13,7 @@ public class Elevator {
     private Door door;
     private int maxCapacity;
     private Display displayObj;
+    private InternalButton internalButton;
 
     public Elevator(int id, int maxCapacity) {
         this.dir = Direction.NONE;
@@ -22,6 +23,7 @@ public class Elevator {
         this.door = new Door();
         this.maxCapacity = maxCapacity;
         this.displayObj = new Display();
+        this.internalButton = new InternalButton();
     }
 
     public void move(int destinationFloor, Direction dir){
@@ -115,5 +117,9 @@ public class Elevator {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public InternalButton getInternalButton() {
+        return internalButton;
     }
 }
