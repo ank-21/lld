@@ -1,7 +1,7 @@
 package models;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,8 +11,8 @@ public class Table {
     private String tableId;
     private static AtomicInteger count = new AtomicInteger(0);
     private int tableNo;
-    private HashMap<String, Column> columnMap;  // Mapping of column Name with column object
-    private HashMap<String, Row> rowHashMap;    // All the rows in the table mapped as RowId -> Row
+    private LinkedHashMap<String, Column> columnMap;  // Mapping of column Name with column object
+    private LinkedHashMap<String, Row> rowHashMap;    // All the rows in the table mapped as RowId -> Row
     private Column primaryKey;
     private LocalDateTime createdAt;
 
@@ -21,9 +21,9 @@ public class Table {
         this.tableId = tableId;
         this.tableNo = count.incrementAndGet();
         this.createdAt = createdAt;
-        this.columnMap = new HashMap<>();
+        this.columnMap = new LinkedHashMap<>();
         populateColumnHashMap(columns);
-        this.rowHashMap = new HashMap<>();
+        this.rowHashMap = new LinkedHashMap<>();
         this.primaryKey = primaryKey;
     }
 
@@ -45,11 +45,11 @@ public class Table {
         return createdAt;
     }
 
-    public HashMap<String, Column> getColumnHashMap() {
+    public LinkedHashMap<String, Column> getColumnHashMap() {
         return columnMap;
     }
 
-    public HashMap<String, Row> getRowHashMap() {
+    public LinkedHashMap<String, Row> getRowHashMap() {
         return rowHashMap;
     }
 
@@ -61,15 +61,16 @@ public class Table {
         return primaryKey;
     }
 
-    public synchronized String insertRow(HashMap<String, Object> columnValues){
+    public synchronized String insertRow(LinkedHashMap<String, Object> columnValues){
         // Checking primary key
         if(!columnValues.containsKey(primaryKey.getColumnName())){
-            System.out.println("Please add primary key " + primaryKey.getColumnName() + " as well." );
+            System.out.println("Please add primary key " + primaryKey.getColumnName() + " as well.");
             return "null";
         }
 
         String id = UUID.randomUUID().toString();
-        HashMap<String, Object> columnData = new HashMap<>(columnValues);
+        // always create a new one
+        LinkedHashMap<String, Object> columnData = new LinkedHashMap<>(columnValues);
         Row row = new Row(id, columnData);
         rowHashMap.put(id, row);
         return id;
@@ -89,7 +90,7 @@ public class Table {
         if(!rowHashMap.containsKey(rowId))
             System.out.println("Row with row id " + rowId + " not found!");
         else{
-            HashMap<String, Object> columnMap = rowHashMap.get(rowId).getColumnHashMap();
+            LinkedHashMap<String, Object> columnMap = rowHashMap.get(rowId).getColumnHashMap();
             columnMap.put(columnName, columnValue);
         }
     }

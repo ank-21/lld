@@ -1,4 +1,7 @@
+package tokenBucket;
+
 import java.util.HashMap;
+import user.User;
 
 public class TokenBucketManager {
     private HashMap<Integer, TokenBucket> userTokenBucketMapping;
@@ -28,7 +31,7 @@ public class TokenBucketManager {
         synchronized (this){
             TokenBucket tokenBucket = userTokenBucketMapping.get(user.getId());
             if (tokenBucket == null) {
-                System.out.println("User not found: " + user.getName());
+                System.out.println("user.User not found: " + user.getName());
                 return;
             }
             if(tokenBucket.allowRequest()){

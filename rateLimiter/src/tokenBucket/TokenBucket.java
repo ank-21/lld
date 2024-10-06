@@ -1,9 +1,11 @@
+package tokenBucket;
+
 import java.time.Instant;
 
 public class TokenBucket {
-    private static final long capacity = 5;        // Maximum number of tokens the bucket can hold
+    private static final long capacity = 2;        // Maximum number of tokens the bucket can hold
     private static final double fillRate = 4;      // Rate at which tokens are added to the bucket (tokens)
-    private static final int fillRateTime = 4;     // Time after which the refill will be done (in seconds)
+    private static final int fillRateTime = 3;     // Time after which the refill will be done (in seconds)
     private double currentTokens;        // Current number of tokens in the bucket
     private Instant lastRefillTimestamp; // Last time we refilled the bucket
 

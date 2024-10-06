@@ -1,22 +1,22 @@
 package models;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Row {
     private String rowId;
-    private HashMap<String, Object> columnHashMap;
+    private LinkedHashMap<String, Object> columnHashMap;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Row(String rowId, HashMap<String, Object> columnHashMap) {
+    public Row(String rowId, LinkedHashMap<String, Object> columnHashMap) {
         this.rowId = rowId;
         this.columnHashMap = columnHashMap;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
 
-    public HashMap<String, Object> getColumnHashMap() {
+    public LinkedHashMap<String, Object> getColumnHashMap() {
         return columnHashMap;
     }
 
