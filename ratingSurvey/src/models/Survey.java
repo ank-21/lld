@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Survey {
-    private String id;
-    private String title;
-    private String description;
+    private final String id;
+    private final String title;
+    private final String description;
     private List<Question> questions;
     private int totalRatingsCount;
     private double averageRating;

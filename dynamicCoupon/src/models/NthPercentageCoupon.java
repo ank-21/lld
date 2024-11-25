@@ -14,6 +14,7 @@ public class NthPercentageCoupon extends Coupon{
             double discountedPrice = product.getPrice() * (1 - percentage / 100);
             product.setPrice(discountedPrice);
         }
+        System.out.println("1");
         super.applyCoupon(cart); // Pass to the next coupon in the chain
     }
 }

@@ -17,7 +17,7 @@ public class ATM {
         if(INSTANCE == null){
             synchronized (ATM.class){
                 if(INSTANCE == null){
-                    INSTANCE =  new ATM();
+                    INSTANCE = new ATM();
                 }
             }
         }

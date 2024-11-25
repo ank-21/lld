@@ -14,8 +14,13 @@ public class PaymentController {
 
     public PaymentController(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
-        transactions = new HashMap<>();
+        transactions = new HashMap<>(); //should have used ConcurrentHashMap
     }
+
+    // Downside:
+    // This approach serializes all transactions globally, which reduces throughput.
+    // For example, transactions involving different users would unnecessarily block each other.
+
 
     public synchronized boolean makePayment(double amount) throws PaymentException{
         String transactionId = UUID.randomUUID().toString();

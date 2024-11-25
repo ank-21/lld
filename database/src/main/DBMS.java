@@ -7,7 +7,7 @@ import models.Table;
 import service.DatabaseManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class DBMS {
@@ -55,13 +55,13 @@ public class DBMS {
 
         db.showTables();
 
-        HashMap<String, Object> columnValue1 = new HashMap<>();
+        LinkedHashMap<String, Object> columnValue1 = new LinkedHashMap<>();
         columnValue1.put(c0.getColumnName(), 32);
         columnValue1.put(c1.getColumnName(), "S.Iyer");
         columnValue1.put(c2.getColumnName(), 14);
         String rowId1 = table1.insertRow(columnValue1);
 
-        HashMap<String, Object> columnValue2 = new HashMap<>();
+        LinkedHashMap<String, Object> columnValue2 = new LinkedHashMap<>();
         columnValue2.put(c0.getColumnName(), 54);
         columnValue2.put(c1.getColumnName(), "P.Salt");
         columnValue2.put(c2.getColumnName(), 6);

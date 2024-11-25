@@ -29,12 +29,10 @@ public class Board {
                    System.out.print(board[i][j].pieceType.name() + "   ");
                 } else {
                     System.out.print("    ");
-
                 }
                 System.out.print(" | ");
             }
             System.out.println();
-
         }
     }
 

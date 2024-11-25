@@ -26,6 +26,7 @@ public class NthItemTypeDiscountCoupon extends Coupon{
                 }
             }
         }
+        System.out.println("4");
         super.applyCoupon(cart);
     }
 }

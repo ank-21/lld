@@ -12,4 +12,23 @@ public class Wallet {
         this.balance = new BigDecimal(0);
         this.transactions = new CopyOnWriteArrayList<>();
     }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
+    }
 }

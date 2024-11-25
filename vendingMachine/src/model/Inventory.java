@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Inventory {
-    private ItemShelf[] products = null;
-    private Map<Integer, ItemShelf> codeMapToShelf = null;
+    private ItemShelf[] products;
+    private Map<Integer, ItemShelf> codeMapToShelf;
     public Inventory(int inventorySize){
         products = new ItemShelf[inventorySize];
         codeMapToShelf = new HashMap<Integer, ItemShelf>();

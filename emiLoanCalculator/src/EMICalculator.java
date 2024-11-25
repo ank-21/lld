@@ -4,6 +4,7 @@ import services.UserService;
 public class EMICalculator {
     public static void main(String[] args) {
         UserService userService = UserService.getInstance();
+        // We should Pass the interest strategy from here
         LoanService loanService = LoanService.getInstance();
 
         userService.addUser("ank21", "Ankit", true);

@@ -26,7 +26,7 @@ public class Admin {
                 displayInventory(vendingMachine);
                 boolean transactionOver = false;
 
-                User user = User.getInstance();
+                User user = User.getInstance(); // Not needed
                 while (!transactionOver) {
                     try {
                         int choice = user.selectOption();

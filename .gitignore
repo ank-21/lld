@@ -3,5 +3,5 @@
 *.iml
 *.gitignore
 *.xml
-*.idea/
+.idea/
 *.class

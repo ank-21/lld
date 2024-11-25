@@ -18,7 +18,7 @@ public class LoanService {
     private HashMap<String, List<Loan>> loans;
 
     private LoanService(){
-        interestStrategy = new SimpleInterestStrategy();
+        interestStrategy = new SimpleInterestStrategy();    // Tightly coupled, violating D of solid principle
         userService = UserService.getInstance();
         loans = new HashMap<>();
     }

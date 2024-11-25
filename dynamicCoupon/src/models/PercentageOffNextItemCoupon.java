@@ -15,6 +15,8 @@ public class PercentageOffNextItemCoupon extends Coupon{
             double discountedPrice = product.getPrice() * (1 - percentage / 100);
             System.out.println("Applying a discount of " + percentage + "% on " + product.getName());
             product.setPrice(discountedPrice);
+            System.out.println("3");
+            // This is done for sequentially applying the coupons
             super.applyCoupon(cart);
         }
     }

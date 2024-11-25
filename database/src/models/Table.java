@@ -11,7 +11,7 @@ public class Table {
     private String tableId;
     private static AtomicInteger count = new AtomicInteger(0);
     private int tableNo;
-    private LinkedHashMap<String, Column> columnMap;  // Mapping of column Name with column object
+    private LinkedHashMap<String, Column> columnMap;  // Mapping of column Name with column object - list of column
     private LinkedHashMap<String, Row> rowHashMap;    // All the rows in the table mapped as RowId -> Row
     private Column primaryKey;
     private LocalDateTime createdAt;

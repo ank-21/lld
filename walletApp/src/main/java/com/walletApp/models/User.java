@@ -10,4 +10,16 @@ public class User {
         this.userName = userName;
         this.wallet = new Wallet();
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
 }

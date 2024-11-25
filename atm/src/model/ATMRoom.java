@@ -4,6 +4,7 @@ import state.Idle;
 
 import java.util.Scanner;
 
+// There should be another class handling this class
 public class ATMRoom {
     private static User user;
     private static ATM atm;

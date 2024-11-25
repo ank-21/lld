@@ -13,6 +13,7 @@ public class AbsoluteValueCoupon extends Coupon {
             System.out.println("Applying a discount of Rs " + price + " on " + product.getName());
             product.setPrice(product.getPrice() - price);
         }
+        System.out.println("2");
         super.applyCoupon(cart);
     }
 }

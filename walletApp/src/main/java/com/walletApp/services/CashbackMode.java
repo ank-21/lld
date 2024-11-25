@@ -1,2 +1,6 @@
-package main.java.com.walletApp.services;public enum CashbackMode {
+package main.java.com.walletApp.services;
+
+public enum CashbackMode {
+    Percentage,
+    Absolute
 }
