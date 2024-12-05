@@ -3,9 +3,7 @@ package main.java.com.phonepeTest.models;
 import main.java.com.phonepeTest.enums.IssueStatus;
 import main.java.com.phonepeTest.enums.IssueType;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class CustomerServiceAgent {
     private String id;
@@ -20,7 +18,7 @@ public class CustomerServiceAgent {
         this.id = id;
         this.name = name;
         this.expertise = expertise;
-        this.assignedIssues = new ArrayList<>();
+        this.assignedIssues = Collections.synchronizedList(new ArrayList<>());
     }
 
     public String getId() {
@@ -40,18 +38,20 @@ public class CustomerServiceAgent {
     }
 
     public void markIssueResolved(String issueId) {
-        for (Issue issue : assignedIssues) {
-            if (issue.getId().equals(issueId) && issue.getStatus() != IssueStatus.RESOLVED) {
-                issue.setStatus(IssueStatus.RESOLVED);
-                System.out.println("Issue " + issueId + " resolved by " + name);
-                return;
+        synchronized (assignedIssues) { // Synchronized block for iteration
+            for (Issue issue : assignedIssues) {
+                if (issue.getId().equals(issueId) && issue.getStatus() != IssueStatus.RESOLVED) {
+                    issue.setStatus(IssueStatus.RESOLVED);
+                    System.out.println("Issue " + issueId + " resolved by " + name);
+                    return;
+                }
             }
+            System.out.println("Issue not found or already resolved.");
         }
-        System.out.println("Issue not found or already resolved.");
     }
 
     public void assignIssue(Issue issue) {
-        assignedIssues.add(issue);
+        assignedIssues.add(issue);  // Thread-safe addition
     }
 
     @Override

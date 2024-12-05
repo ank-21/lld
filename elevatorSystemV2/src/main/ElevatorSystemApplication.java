@@ -21,7 +21,7 @@ public class ElevatorSystemApplication {
 
         // Create 3 elevators
         for (int i = 0; i < 3; i++) {
-            ElevatorController controller = new ElevatorController(i, 120);
+            ElevatorController controller = new ElevatorController(i, 1200);
             elevatorSystem.getElevatorControllerList().add(controller);
         }
 

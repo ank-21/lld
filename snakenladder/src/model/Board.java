@@ -13,12 +13,12 @@ public class Board {
     private void initializeCells(int boardSize){
         cells = new Cell[boardSize][boardSize];
 
-        for(int i = 0; i < boardSize; i++){
-            for(int j = 0; j < boardSize; j++){
-                Cell cell = new Cell();
-                cells[i][j] = cell;
-            }
-        }
+//        for(int i = 0; i < boardSize; i++){
+//            for(int j = 0; j < boardSize; j++){
+//                Cell cell = new Cell();
+//                cells[i][j] = cell;
+//            }
+//        }
     }
     private void addSnakeLadders(int snakeCount, int ladderCount){
         //Adding snakes
@@ -28,7 +28,7 @@ public class Board {
             int snakeTail = ThreadLocalRandom.current().nextInt(1, cells.length * cells.length - 1);
 
             Cell snakeCell = getCell(snakeHead);
-            if(snakeHead <= snakeTail || snakeCell.jumper != null)
+            if(snakeHead <= snakeTail || snakeCell != null)
                 continue;
             Jumper snakeObj = new Jumper(snakeHead, snakeTail);
             snakeCell.setJumper(snakeObj);
@@ -42,7 +42,7 @@ public class Board {
             int ladderTail = ThreadLocalRandom.current().nextInt(1, cells.length * cells.length - 1);
 
             Cell ladderCell = getCell(ladderHead);
-            if(ladderTail <= ladderHead || ladderCell.jumper != null)
+            if(ladderTail <= ladderHead || ladderCell == null)
                 continue;
             Jumper ladderObj = new Jumper(ladderHead, ladderTail);
             ladderCell.setJumper(ladderObj);
@@ -54,7 +54,7 @@ public class Board {
     public Cell getCell(int playerPosition) {
         int boardRow = playerPosition / cells.length;
         int boardColumn = (playerPosition % cells.length);
-        return cells[boardRow][boardColumn];
+        return cells[boardRow][boardColumn] == null ? new Cell() : cells[boardRow][boardColumn];
     }
 
     public int getBoardSize(){

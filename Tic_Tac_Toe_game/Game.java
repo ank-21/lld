@@ -48,8 +48,9 @@ public class Game {
 
             //checking if board is already full
             if(gameBoard.isBoardFull()){
-                noWinner = false;
-                continue;
+//                noWinner = false;
+//                continue;
+                break;
             }
 
             System.out.print("Player: " + currPlayer.getPlayerName() + " turn. Please Enter row, column value: ");

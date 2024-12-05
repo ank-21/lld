@@ -6,12 +6,13 @@ import main.java.com.phonepeTest.utils.exception.AgentNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AgentManager {
     private final List<CustomerServiceAgent> agents;
 
     public AgentManager() {
-        this.agents = new ArrayList<>();
+        this.agents = new CopyOnWriteArrayList<>();
     }
 
     public void onboardAgent(CustomerServiceAgent agent) {

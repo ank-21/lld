@@ -11,7 +11,7 @@ public class RoundRobinAssignment implements AssignmentStrategy {
     private final AtomicInteger currentIndex = new AtomicInteger(0);
 
     @Override
-    public CustomerServiceAgent assignAgent(List<CustomerServiceAgent> agents, Issue issue) throws AgentNotFoundException {
+    public synchronized CustomerServiceAgent assignAgent(List<CustomerServiceAgent> agents, Issue issue) throws AgentNotFoundException {
         for (int i = 0; i < agents.size(); i++) {
             CustomerServiceAgent agent = agents.get((currentIndex.get() + i) % agents.size());
             if (agent.canHandleIssue(issue.getType())) {

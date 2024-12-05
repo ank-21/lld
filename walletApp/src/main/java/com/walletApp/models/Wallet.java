@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Wallet {
+public class Wallet implements IWallet{
     private BigDecimal balance;
     List<Transaction> transactions;
 

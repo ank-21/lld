@@ -36,9 +36,9 @@ public class IssueManager {
         return issue;
     }
 
-    private synchronized void assignIssue(Issue issue) throws AgentNotFoundException {
+    private void assignIssue(Issue issue) throws AgentNotFoundException {
         CustomerServiceAgent assignedAgent = assignmentStrategy.assignAgent(agentManager.getAllAgents(), issue);
-        assignedAgent.assignIssue(issue);
+        assignedAgent.assignIssue(issue); // Thread-safe due to CopyOnWriteArrayList
         System.out.println("Assigned Issue " + issue.getId() + " to Agent " + assignedAgent.getName());
     }
 

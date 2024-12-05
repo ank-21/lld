@@ -7,13 +7,13 @@ public class Board {
     
     private final int size;
     public Piece[][] board;
-    private Set<String> rowColSet;
+    private int occupiedCells;
     private int maxSize;
 
     public Board(int size) {
         this.size = size;
         board = new Piece[size][size];
-        rowColSet = new HashSet<>();
+        occupiedCells = 0;
         maxSize = size * size;
     }
 
@@ -37,7 +37,7 @@ public class Board {
     }
 
     public boolean isBoardFull(){
-        return rowColSet.size() >= maxSize;
+        return occupiedCells >= maxSize;
     }
 
     public boolean addPiece(int row, int col, Piece piece){
@@ -46,8 +46,7 @@ public class Board {
             return false;
         }
         board[row][col] = piece;
-        String pair = row + "," + col;
-        rowColSet.add(pair);
+        occupiedCells++;
         return true;
     }
 }

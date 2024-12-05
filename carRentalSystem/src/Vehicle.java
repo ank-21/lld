@@ -39,6 +39,7 @@ public class Vehicle {
         return licensePlateNumber;
     }
 
+    // make it abstract
     public int getPricePerDay() {
         return pricePerDay;
     }
